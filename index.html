@@ -45,21 +45,22 @@
   <script>
     const API = "https://lewis-bookstore-api.onrender.com";
 
-    // Load Books
-    document.getElementById("loadBooks").addEventListener("click", () => {
-      fetch(`${API}/books`)
-        .then(res => res.json())
-        .then(data => {
-          const list = document.getElementById("bookList");
-          list.innerHTML = "";
-          data.forEach(book => {
-            const li = document.createElement("li");
-            li.textContent = `${book.title} — ${book.author}`;
-            list.appendChild(li);
-          });
-        })
-        .catch(err => console.error("Books error:", err));
-    });
+// Load Books
+document.getElementById("loadBooks").addEventListener("click", () => {
+  fetch(`${API}/books`)
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById("bookList");
+      list.innerHTML = "";
+      data.forEach(book => {
+        const li = document.createElement("li");
+        li.textContent = book.title;   // ← only show title
+        list.appendChild(li);
+      });
+    })
+    .catch(err => console.error("Books error:", err));
+});
+
 
     // Load Authors
     document.getElementById("loadAuthors").addEventListener("click", () => {
@@ -77,21 +78,22 @@
         .catch(err => console.error("Authors error:", err));
     });
 
-    // Load Users
-    document.getElementById("loadUsers").addEventListener("click", () => {
-      fetch(`${API}/users`)
-        .then(res => res.json())
-        .then(data => {
-          const list = document.getElementById("userList");
-          list.innerHTML = "";
-          data.forEach(user => {
-            const li = document.createElement("li");
-            li.textContent = `${user.username} (${user.email})`;
-            list.appendChild(li);
-          });
-        })
-        .catch(err => console.error("Users error:", err));
-    });
+// Load Users
+document.getElementById("loadUsers").addEventListener("click", () => {
+  fetch(`${API}/users`)
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById("userList");
+      list.innerHTML = "";
+      data.forEach(user => {
+        const li = document.createElement("li");
+        li.textContent = user.email;  // ← only show email
+        list.appendChild(li);
+      });
+    })
+    .catch(err => console.error("Users error:", err));
+});
+
   </script>
 
 </body>
